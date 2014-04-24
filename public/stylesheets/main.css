@@ -1,0 +1,65 @@
+body {
+  font-family: helvetica;
+  color: #333;
+  background: #CCC;
+}
+
+#chat {
+  min-height: 200px;
+  right: 10px;
+  left: 30px;
+  background: #AAA;
+  width: 420px;
+}
+
+.msg {
+  padding: 10px;
+  width: 400px;
+  background: #FF9966;
+}
+
+.others {
+  background: #99D8FF;
+}
+
+.juliet {
+  background: #FF69B4;
+}
+
+#textField {
+  width: 320px;
+  position: relative;
+  top: 4px;
+}
+
+#userField {
+  width: 210px;
+  position: relative;
+  top: 1px;
+}
+
+#header {
+  color: #EEE;
+  width: 400px;
+  height: 34px;
+  font-weight: bold;
+  padding: 10px;
+  background: #666;
+}
+
+#footer {
+  color: #EEE;
+  width: 400px;
+  height: 34px;
+  font-weight: bold;
+  padding: 10px;
+  background: #666;
+}
+
+#roomSelect {
+  width: 85px;
+}
+
+.undo {
+  padding: 20px 0;
+}

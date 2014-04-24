@@ -1,0 +1,46 @@
+@(title: String)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@title</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.15/angular.min.js"></script>
+        <script src="@routes.Assets.at("javascripts/app.js")"></script>
+        <script src="@routes.Assets.at("javascripts/services.js")"></script>
+        <script src="@routes.Assets.at("javascripts/controllers.js")"></script>
+        
+    </head>
+    <body ng-app="sseChat">
+        
+        <div ng-controller="ChatCtrl">
+            <div id="header">
+                Your Name: <input type="text" name="user" id="userField" value="John Doe" ng-model="user" />
+                <select ng-model="currentRoom" ng-change="setCurrentRoom(currentRoom)" 
+                  ng-options="r.name for r in rooms" id="roomSelect"></select>
+            </div>
+
+            <div id="chat">
+                <div class="{{msg.who}} msg" ng-repeat="msg in msgs | limitTo:-4"
+                ng-class="msg.user === 'Juliet' ? 'juliet' : msg.user !== user ? 'others' : ''">{{msg.time}}<br/>
+                    <strong>{{msg.user}} says: </strong>{{msg.text}}<br/>
+                </div>
+            </div>
+
+            <div id="footer">
+                <form ng-submit="submitMsg()">
+                    <input type="text" name="chat" id="textField" ng-model="inputText"
+                     placeholder="Say something" class="ng-pristine ng-valid input-block-level" />
+                    <input type="button" class="btn btn-primary" id="saySomething" value="Submit" ng-click="submitMsg()" />
+                </form>
+            </div>
+        </div>
+ 
+    </body>
+</html>
