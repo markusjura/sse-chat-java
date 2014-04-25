@@ -22,6 +22,9 @@ How to run this:
 
 This application will work in Firefox, Safari, Chrome and Opera. It will not work in Internet Explorer, simply because Microsoft for whatever reason does not support Server Sent Events.
 
+## Requirements
+- Java 8 (Uses lambda expressions and Map.compute)
+
 ## Licence
 
 This software is licensed under the Apache 2 license, quoted below.
