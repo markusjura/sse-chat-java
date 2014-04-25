@@ -1,7 +1,7 @@
 sse-chat-java
 =============
 
-This is a simple chat application using **[Play Framework](http://www.playframework.com)** together with **[AngularJS](http://angularjs.org)**. It makes use of a EventSource as the **[Iteratee](http://www.playframework.com/documentation/2.1.0/Iteratees)**. Together these building blocks facilitate the chat message data flow within the application.
+This is a simple chat application using **[Play Framework](http://www.playframework.com)** together with **[AngularJS](http://angularjs.org)**. It makes use of an EventSource to push the data from the server to the client. Together these building blocks facilitate the chat message data flow within the application.
 The app has been originally written in Scala by [Matthias Nehlsen](https://github.com/matthiasn). This project is a rewrite of the app in Java. The app in Scala can be found [here](https://github.com/matthiasn/sse-chat).
 
 ![Architecture](./tutorial/sse-chat.png)
