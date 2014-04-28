@@ -25,8 +25,11 @@ public class Chatter extends UntypedActor {
     if(message == ChatActors.TALK) {
       String now = DateTime.now().toString();
       String quote = quotes.get(new Random().nextInt(quotes.size()));
-      String msgAsString = "{ \"room\": \"room1\", \"text\": \"" + quote + "\", \"user\": \"" + name + "\", \"time\": \"" + now + "\" }";
-      JsonNode msg = Json.parse(msgAsString);
+      JsonNode msg = Json.newObject()
+        .put("room", "room1")
+        .put("text", quote)
+        .put("user", name)
+        .put("time", now);
 
       ChatApplication.sendEvent(msg);
     }
