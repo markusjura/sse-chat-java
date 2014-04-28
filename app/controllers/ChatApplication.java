@@ -12,6 +12,7 @@ import java.util.Map;
 
 public class ChatApplication extends Controller {
 
+  /** Keeps track of all connected browsers per room **/
   private static Map<String, List<EventSource>> socketsPerRoom = new HashMap<String, List<EventSource>>();
 
   /**
@@ -29,15 +30,25 @@ public class ChatApplication extends Controller {
     return ok();
   }
 
+  /**
+   * Send event to all channels (browsers) which are connected to the room
+   */
   public static void sendEvent(JsonNode msg) {
     String room  = msg.findPath("room").textValue();
     if(socketsPerRoom.containsKey(room)) {
-      for(EventSource es: socketsPerRoom.get(room)) {
-        es.send(EventSource.Event.event(msg));
-      }
+      socketsPerRoom.get(room).stream().forEach(es -> es.send(EventSource.Event.event(msg)));
     }
   }
 
+  /**
+   * Establish the SSE HTTP 1.1 connection.
+   * The new EventSource socket is stored in the socketsPerRoom Map
+   * to keep track of which browser is in which room.
+   *
+   * onDisconnected removes the browser from the socketsPerRoom Map if the
+   * browser window has been exited.
+   * @return
+   */
   public static Result chatFeed(String room) {
     String remoteAddress = request().remoteAddress();
     Logger.info(remoteAddress + " - SSE conntected");
